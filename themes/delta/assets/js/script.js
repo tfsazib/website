@@ -112,6 +112,7 @@ $(document).ready(function () {
       sessionStorage.setItem("learningScrolledPopupHide", "true");
     });
   }
+  
 
   $('[data-bs-toggle="collapse"]').on("click", function () {
     if (!$(this).hasClass("accordion-button")) {
