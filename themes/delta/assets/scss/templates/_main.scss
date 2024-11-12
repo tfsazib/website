@@ -1820,7 +1820,7 @@ a.share-icon {
     }
 
     &:not(.collapsed)::after {
-      transform: rotate(-180deg);
+      transform: rotate(-0deg);
     }
   }
 
@@ -2819,4 +2819,53 @@ pre {
 
 :not(pre) > code + span.copy-to-clipboard {
   display: none;
+}
+
+
+
+
+
+
+.faq-container {
+  overflow: hidden;
+  background-color: $dark-900;
+  padding: 20px;
+  display: grid;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+
+@media (max-width: 1024px) {
+  .faq-container {
+    margin-bottom: 2.5rem; 
+  }
+  
+  .faq-container:last-child {
+    margin-bottom: 0; 
+  }
+}
+
+@media (min-width: 1024px) {
+  .faq-container {
+    position: sticky;
+    top: 120px; 
+  }
+}
+
+.faq-container .inner {
+  padding: 1.25rem; 
+}
+
+
+
+
+.faq-accordion-button {
+  padding-bottom: 20px;
+  color: $text-color !important;
+  background-color: transparent !important;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
