@@ -921,3 +921,50 @@ conditionalForm();
 setRequired();
 
 
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Pin the FAQ section
+gsap.to(".faq-section", {
+  scrollTrigger: {
+    trigger: ".trigger-section",
+    start: "top top",
+    end: "bottom bottom",
+    pin: ".faq-section",
+    pinSpacing: true,
+    scrub: true,
+  },
+});
+
+// Create a timeline for FAQ items
+const faqItems = gsap.utils.toArray(".faq-item");
+let currentActive = null;
+
+faqItems.forEach((item, index) => {
+  const totalItems = faqItems.length;
+  const sectionHeight = 1 / totalItems;
+  const start = index * sectionHeight;
+  const end = (index + 1) * sectionHeight;
+
+  ScrollTrigger.create({
+    trigger: ".trigger-section",
+    start: `${start * 100}% top`,
+    end: `${end * 100}% top`,
+    onToggle: (self) => {
+      if (self.isActive) {
+        if (currentActive && currentActive !== item) {
+          currentActive.classList.remove("active");
+        }
+        item.classList.add("active");
+        currentActive = item;
+      } else if (currentActive === item) {
+        item.classList.remove("active");
+        currentActive = null;
+      }
+    },
+    scrub: true,
+  });
+});
